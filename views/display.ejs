@@ -1,0 +1,229 @@
+<!--出品-->
+<%- include('partials/traderHeader.ejs'); %>
+
+    <nav class="navbar navbar-expand-lg navbar-light border-primary border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand text-primary" href="#"><b>出品詳細</b></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="/master"><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="/stock"><b>在庫一覧</b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+
+        <table class="contact-table">
+            <tr>
+                <th class="contact-item">ID</th>
+                <td class="contact-body">
+                    <%= values.id %>
+                </td>
+            </tr>
+            <tr>
+                <th class="contact-item">車両名</th>
+                <td class="contact-body">
+                    <%= values.product_name %>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">形状</th>
+                <td class="contact-body">
+                    <%= values.shape %>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">グレード</th>
+                <td class="contact-body">
+                    <%= values.grade %>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">型式</th>
+                <td class="contact-body">
+                    <%= values.model%>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">出品番号</th>
+                <td class="contact-body">
+                    <%= values.product_num %>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">年式</th>
+                <td class="contact-body">
+                    <%= values.model_year %>年</td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">走行距離</th>
+                <td class="contact-body">
+                    <%= values.mileage %>Km</td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">排気量</th>
+                <td class="contact-body">
+                    <%= values.engine_size %>cc</td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">燃料</th>
+                <td class="contact-body">
+                    <%= values.fuel %>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">タイプ</th>
+                <td class="contact-body">
+                    <%= values.car_type %>
+                </td>
+            </tr>
+
+
+            <tr>
+                <th class="contact-item">メーカー</th>
+                <td class="contact-body">
+                    <%= values.maker%>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="contact-item">評価</th>
+                <td class="contact-body">
+                    <%= values.evaluation %>
+                </td>
+            </tr>
+
+            <% if (values.listing_flg==1) { %>
+
+                <tr>
+                    <th class="contact-item">ステータス</th>
+                    <td class="contact-body">出品済み</td>
+                </tr>
+                <input type="hidden" id="name" value="<%= values.id %>" name="name">
+
+                <tr>
+                    <th class="contact-item">取り消しますか</th>
+                    <td class="contact-body"><input type="button" id="display1" value="出品取消"></td>
+                </tr>
+                <% } else { %>
+                    <input type="hidden" id="p_num" value="<%= values.product_num %>" name="p_num">
+                    <input type="hidden" id="id" value="<%= values.id %>" name="name">
+                    <input type="hidden" id="name" value="<%= values.vehicle_name %>" name="name">
+                    <input type="hidden" id="year" value="2022" name="year">
+                    <tr>
+                        <th class="contact-item">オークション開始日時</th>
+                        <td class="contact-body"><input type="hidden" id="year" value="2022" name="year"> 2022年
+                            <select id="month">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select> 月
+                            <select id="day">
+                            <% for (i=1; i<=31; i++) { %>
+                                <option value="<%= i %>">
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select> 日
+                            <select id="hour">
+                            <% for (i=0; i<=24; i++) { %>
+                                <option value="<%= i %>">
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select> 時
+                            <select id="minutes">
+                            <% for (i=0; i<=59; i++) { %>
+                                <option value="<%= i %>">
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select> 分
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">開始金額</th>
+                        <td class="contact-body"><input type="number" id="money" value="<%= values.purchase_amount %>" name="money">円〜</td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">出品しますか</th>
+                        <td class="contact-body"><input type="button" id="display2" value="出品する"></td>
+                    </tr>
+        </table>
+        <% } %>
+
+            <div id="output"></div>
+    </div>
+
+    <script>
+        $('#display2').click(function(e) {
+            // console.log(fd);
+
+            let num = Number($('#minutes').val());
+            let num1 = num + 3;
+            var value1 = {
+                id: $('#id').val(),
+                p_num: $('#p_num').val(),
+                name: $('#name').val(),
+                date: $('#year').val() + "-" + $('#month').val() + "-" + $('#day').val() + " " + $('#hour').val() + ":" + $('#minutes').val(),
+                date_s: $('#year').val() + "-" + $('#month').val() + "-" + $('#day').val() + " " + $('#hour').val() + ":" + num1,
+                money: $('#money').val()
+            }
+            $.ajax({
+                type: "POST",
+                data: value1,
+                url: "/displaycomp",
+            }).done(function(results) {
+                console.log(results);
+                $('#display2').prop('disabled', true);
+                $('#output').append(results.name + '<br>');
+            }).fail(function(xhr, textStatus, errorThrown) {
+                console.log('失敗');
+            }).always(function(xhr) {});
+        });
+
+        $('#display1').click(function(e) {
+            // console.log(fd);
+
+            var value1 = {
+                name: $('#name').val()
+            }
+            $.ajax({
+                type: "POST",
+                data: value1,
+                url: "/displaycom",
+            }).done(function(results) {
+                console.log(results);
+                $('#display1').prop('disabled', true);
+                document.getElementById('dis').innerHTML = "";
+                $('#output').append(results.name + '<br>');
+            }).fail(function(xhr, textStatus, errorThrown) {
+                console.log('失敗');
+            }).always(function(xhr) {});
+        });
+    </script>

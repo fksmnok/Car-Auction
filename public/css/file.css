@@ -1,0 +1,81 @@
+html,
+body {
+    height: 100%;
+}
+
+.msg {
+    margin-top: 30px;
+}
+
+.wrap {
+    padding: 20px;
+    /* 余白指定 */
+    /* 背景色指定 */
+    height: 100%;
+    /* 高さ指定 */
+    width: 100%;
+    position: relative;
+}
+
+.content {
+    border: solid 1px #8273e6;
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    /* 位置指定 */
+    padding: 20px;
+    /* 余白指定 */
+    top: 0;
+    /* 位置指定 */
+    bottom: 0;
+    /* 位置指定 */
+    left: 0;
+    /* 位置指定 */
+    right: 0;
+    /* 位置指定 */
+    margin: auto;
+    /* 中央寄せ */
+    width: 40%;
+    /* 幅指定 */
+    height: 500px;
+}
+
+table {
+    margin: 0 auto;
+    height: 40%;
+    text-align: center;
+}
+
+.button1 {
+    width: 250px;
+    background-color: rgb(255, 255, 255);
+    color: #8273e6;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 100vh;
+    border: solid 1px#8273e6;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.button1:hover {
+    width: 250px;
+    background-color: #8273e6;
+    color: #ffffff;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 100vh;
+    border: solid 1px#8273e6;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}

@@ -1,0 +1,178 @@
+<!--ユーザTOP-->
+
+<!-- bootstrap読み込み用 -->
+<%- include('partials/stylesheets.ejs'); %>
+    <%- include('partials/header.ejs'); %>
+
+
+        <main>
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-light">欲しい車はすべてここに</h1>
+                        <p class="lead text-muted">
+                            ようこそ、「Kosacars.com」に.あなたの欲しい車がすぐに見つかるオークションサイトです.まずは、欲しい車のメーカーとボディサイズを教えて下さい.</p>
+
+                            <form action="./sort" action="get">
+                                <select name="maker" class="form-select form-select-sm my-2" aria-label=".form-select-sm example">
+                                    <option value="" hidden>メーカーを指定する</option>
+                                    <option value="トヨタ">トヨタ</option>
+                                    <option value="日産">日産</option>
+                                    <option value="マツダ">マツダ</option>
+                                    <option value="ホンダ">ホンダ</option>
+                                    <option value="スズキ">スズキ</option>
+                                    <option value="スバル">スバル</option>
+                                    <option value="ダイハツ">ダイハツ</option>
+                                    <option value="三菱">三菱</option>
+                                    <option value="その他">その他</option>
+                                </select>
+                        
+                                <select name="bodytype" class="form-select form-select-sm my-2" aria-label=".form-select-sm example">
+                                    <option value="hidden">ボディタイプ指定する</option>
+                                    <option value="セダン">セダン</option>
+                                    <option value="コンパクトカー">コンパクトカー</option>
+                                    <option value="ミニバン">ミニバン</option>
+                                    <option value="クーペ">クーペ</option>
+                                    <option value="軽">軽</option>
+                                    <option value="その他">その他</option>
+                                </select>
+                                <input class="btn btn-outline-secondary" type="submit" value="調べる">
+                            </form>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                function changeDate(date) {
+                    var strMonth = date.substr(4, 3);
+                    var day = date.substr(8, 2);
+                    var year = date.substr(11, 4);
+                    var time = date.substr(16, 8);
+                    if (strMonth == "Jan") {
+                        var month = 1;
+                    }
+                    if (strMonth == "Feb") {
+                        var month = 2;
+                    }
+                    if (strMonth == "Mar") {
+                        var month = 3;
+                    }
+                    if (strMonth == "Apr") {
+                        var month = 4;
+                    }
+                    if (strMonth == "May") {
+                        var month = 5;
+                    }
+                    if (strMonth == "Jun") {
+                        var month = 6;
+                    }
+                    if (strMonth == "Jul") {
+                        var month = 7;
+                    }
+                    if (strMonth == "Aug") {
+                        var month = 8;
+                    }
+                    if (strMonth == "Sep") {
+                        var month = 9;
+                    }
+                    if (strMonth == "Oct") {
+                        var month = 10;
+                    }
+                    if (strMonth == "Nov") {
+                        var month = 11;
+                    }
+                    if (strMonth == "Dec") {
+                        var month = 12;
+                    }
+                    var dateTime = year + "年" + month + "月" + day + "日" + time;
+                    return dateTime;
+                }
+            </script>
+
+            <!-- <img src="./img/ban.jpg"> -->
+            <main>
+                <div class="py-5 bg-light">
+                    <div class="container">
+                        <h2>オークション一覧</h2>
+                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                            <% for (var key in car){ %>
+                                <% if(syuppin[key].bid_end_flag==0){ %>
+                                    <div class="col">
+                                        <div class="card shadow-sm">
+
+                                            <% for (var img in image){ %>
+                                                <% if(car[key].product_num==image[img].product_num &&
+                                                    image[img].place=="top" ){ %>
+                                                    <% if(image[img].path.substr(0,4)=="copy" ){ %>
+                                                        <img class="card-img-top" src="/img/<%= image[img].path %>"
+                                                            style="height: 14rem;">
+                                                        <% }else{ %>
+                                                            <img class="card-img-top" src="<%= image[img].path %>"
+                                                                style="height: 14rem;">
+                                                            <% } %>
+                                                                <% } %>
+                                                                    <% } %>
+                                                                        <div class="card-body">
+                                                                            <h5 class="card-title">
+                                                                                <%= car[key].product_name %>
+                                                                            </h5>
+                                                                        </div>
+
+                                                                        <% for(var key2 in syuppin){ %>
+                                                                            <% if(car[key].product_num==syuppin[key2].product_num){
+                                                                                %>
+                                                                                <ul class="list-group list-group-flush">
+                                                                                    <li class="list-group-item"
+                                                                                        id="start<%= key %>"></li>
+                                                                                    <li class="list-group-item"
+                                                                                        id="end<%= key %>"></li>
+                                                                                    <li class="list-group-item">開始価格 :
+                                                                                        <%= syuppin[key].bid_amount %>円
+                                                                                    </li>
+                                                                                    <script>
+                                                                                        var startdate = changeDate("<%= syuppin[key].start_bid_day %>");
+                                                                                        var stopdate = changeDate("<%= syuppin[key].end_bid_day %>");
+                                                                                        document.getElementById("start<%= key %>").innerHTML = "開始時刻 : <br>" + startdate;
+                                                                                        document.getElementById("end<%= key %>").innerHTML = "終了時刻 : <br>" + stopdate;
+                                                                                        console.log(startdate);
+                                                                                    </script>
+                                                                                </ul>
+                                                                                <% } %>
+                                                                                    <% } %>
+                                                                                        <div class="card-body">
+                                                                                            <p><a class="card-link btn btn-primary btn-sm"
+                                                                                                    href="/detail/<%= car[key].product_num %>">詳細を見る</a>
+                                                                                            </p>
+                                                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% } %>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <script>
+                function maker() {
+                    var index = document.getElementById("maker").selectedIndex;
+                    var value = document.getElementById("maker").value;
+                    var value1 = {
+                        type: value,
+                    }
+                    $.ajax({
+                        type: "POST",
+                        data: value1,
+                        url: "/search1",
+                    }).done(function (results) {
+                        console.log(results);
+                        $('#display2').prop('disabled', true);
+                        $('#output').append(results.name + '<br>');
+                    }).fail(function (xhr, textStatus, errorThrown) {
+                        console.log('失敗');
+                    }).always(function (xhr) { });
+                }
+            </script>
+
+            <!-- footer -->
+            <%- include('partials/footer.ejs'); %>

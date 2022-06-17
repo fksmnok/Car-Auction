@@ -1,0 +1,29 @@
+<!--業者か個人か選ばせる画面-->
+<%- include('partials/traderHeader.ejs'); %>
+<div class="main-container">
+    <h2>オークションセンター</h2>
+    <div class="radio-buttons">
+        <label class="custom-radio" onclick="location.href='/login'">
+            <input type="radio" name="radio" checked />
+            <span class="radio-btn">
+                <i class="las la-check"></i>
+                <div class="hobbies-icon">
+                    <i class="las la-user"></i>
+                    <h3>クライアント</h3>
+                </div>
+            </span>
+        </label>
+
+        <label class="custom-radio" onclick="location.href='/traderlogin'">
+            <input type="radio" name="radio" />
+            <span class="radio-btn">
+                <i class="las la-check"></i>
+                <div class="hobbies-icon">
+                    <i class="las la-user-secret"></i>
+                    <h3>業者</h3>
+                </div>
+            </span>
+        </label>
+    </div>
+</div>
+<%- include('partials/footer.ejs'); %>

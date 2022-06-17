@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/carDetail.css">
+    <link rel="stylesheet" type="text/css" href="/css/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="/css/slick/slick-theme.css">
+    <%- include('partials/stylesheets.ejs'); %>
+        <title>車両詳細オークション</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <main class="usersy">
+            <!-- 車画像 -->
+            <div class="car">
+                <% for(var i = 0; i < image.length; i++){ %>
+                    <% if(image[i].path.substr(0,4)=="copy" ){ %>
+                        <div><img src="/img/<%= image[i].path %>"></div>
+                    <% }else{ %>
+                        <div><img src="<%= image[i].path %>"></div>
+                    <% } %>
+                <% } %>
+
+            </div>
+            <script>
+                var endDate = "<%= endDate %>";
+                year = endDate.substr(11, 4);
+                strMonth = endDate.substr(4, 3);
+                if (strMonth == "Jan") {
+                    var month = 1;
+                }
+                if (strMonth == "Feb") {
+                    var month = 2;
+                }
+                if (strMonth == "Mar") {
+                    var month = 3;
+                }
+                if (strMonth == "Apr") {
+                    var month = 4;
+                }
+                if (strMonth == "May") {
+                    var month = 5;
+                }
+                if (strMonth == "Jun") {
+                    var month = 6;
+                }
+                if (strMonth == "Jul") {
+                    var month = 7;
+                }
+                if (strMonth == "Aug") {
+                    var month = 8;
+                }
+                if (strMonth == "Sep") {
+                    var month = 9;
+                }
+                if (strMonth == "Oct") {
+                    var month = 10;
+                }
+                if (strMonth == "Nov") {
+                    var month = 11;
+                }
+                if (strMonth == "Dec") {
+                    var month = 12;
+                }
+                day = endDate.substr(8, 2);
+                hour = endDate.substr(16, 2);
+                minute = endDate.substr(19, 2);
+
+                endDate = year + "-" + month + "-" + day + " " + hour + ":" + minute;
+                endDate = new Date(endDate);
+                username = "<%= user %>";
+            </script>
+            <script>
+                var room = "<%= values[0].product_num %>";
+                var id = "<%= id %>";
+            </script>
+
+            <!-- 詳細情報 -->
+            <article class="tablear">
+                <table class="contact-table">
+                    <tr>
+                        <th class="contact-item">車両名</th>
+                        <td class="contact-body">
+                            <%= results.product_name %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">型式</th>
+                        <td class="contact-body">
+                            <%= results.model %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">出品番号</th>
+                        <td class="contact-body">
+                            <%= results.product_num %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">年式:</th>
+                        <td class="contact-body">
+                            <%= results.model_year %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">走行距離:</th>
+                        <td class="contact-body">
+                            <%= results.mileage %>km</td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">排気量:</th>
+                        <td class="contact-body">
+                            <%= results.engine_size %>cc</td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">評価:</th>
+                        <td class="contact-body">
+                            <%= results.evaluation %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="contact-item">出品金額</th>
+                        <td class="contact-body">
+                            <%= values[0].bid_amount %>〜
+                        </td>
+                    </tr>
+                </table>
+            </article>
+
+        </main>
+
+        <!-- 入札ボタン -->
+        <div class="button_wrapper">
+            <h2>残り時間：<span id="remainingdate">終了</span><br></h2>
+            <h2>
+                現在の価格：<span id="output"><%= nowprice %></span>　円
+            </h2>
+            <% if(user !=null){ %>
+                <form id="chatForm">
+                    <button type="submit" class="button1" value="10000">入札</button>
+                </form>
+                <div class="button_wrapper">
+                    <button class="button2" id="text"></button>
+                </div>
+
+                <% }else{ %>
+                    <p><a href="http://localhost:9000/login">ログインしてください</a></p>
+                <% } %>
+        </div>
+    </div>
+    <!-- ここから -->
+    <div class="container">
+        <h2>車両状態</h2>
+        <table class="table table-bordered table-hover text-center">
+            <tbody>
+                <tr>
+                    <th scope="col">年式</th>
+                    <td><%= results.model_year %></td>
+                    <th scope="col">型式</th>
+                    <td><%= results.model %></td>
+                </tr>
+                <tr>
+                    <th scope="col">ワンオーナー</th>
+                    <td><%= results.one_owner %></td>
+                    <th scope="col">走行距離</th>
+                    <td><%= results.mileage %>km</td>
+                </tr>
+                <tr>
+                    <th scope="col">修復歴</th>
+                    <td><%= results.repaire_history %></td>
+                    <th scope="col">福祉車両</th>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="col">禁煙車</th>
+                    <td>-</td>
+                    <th scope="col">定期点検記録簿</th>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="col">リサイクル料</th>
+                    <td>-</td>
+                    <th scope="col">車検</th>
+                    <td><%= results.inspection_date %></td>
+                </tr>
+                <tr>
+                    <th scope="col">保証</th>
+                    <td><%= results.warranty %></td>
+                    <th scope="col"></th>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>オプション</h2>
+        <table class="table table-bordered text-center">
+            <tbody>
+                <tr>
+                    <th scope="col">パワーステアリング</th>
+                    <td><%= results.option_ps %></td>
+                    <th scope="col">パワーウィンドウ</th>
+                    <td><%= results.option_pw %></td>
+                </tr>
+                <tr>
+                    <th scope="col">ABS</th>
+                    <td><%= results.option_abs %></td>
+                    <th scope="col">アルミホイール</th>
+                    <td><%= results.option_aw %></td>
+                </tr>
+                <tr>
+                    <th scope="col">カセットデッキ</th>
+                    <td><%= results.option_cassette %></td>
+                    <th scope="col">CDプレイヤー</th>
+                    <td><%= results.option_cd %></td>
+                    
+                </tr>
+                <tr>
+                    <th scope="col">MDプレイヤー</th>
+                    <td><%= results.option_md %></td>
+                    <th scope="col">サンルーフ</th>
+                    <td><%= results.option_sr %></td>
+                </tr>
+                <tr>
+                    <th scope="col">背面タイヤ</th>
+                    <td><%= results.option_bw %></td>
+                    <th scope="col">本革シート</th>
+                    <td><%= results.option_leather %></td>
+                </tr>
+                <tr>
+                    <th scope="col">エアーバッグ</th>
+                    <td><%= results.option_ab %></td>
+                    <th scope="col">テレビ</th>
+                    <td><%= results.option_tv %></td>
+                </tr>
+                <tr>
+                    <th scope="col">ナビゲーション</th>
+                    <td><%= results.option_nav %></td>
+                    <th scope="col">シャースポイラ</th>
+                    <td><%= results.option_rspo %></td>
+                </tr>
+                <tr>
+                    <th scope="col">音楽プレイヤー接続可</th>
+                    <td><%= results.option_ps %></td>
+                    <th scope="col">３列シート</th>
+                    <td><%= results.option_ps %></td>
+                </tr>
+                <tr>
+                    <th scope="col">シートエアコン</th>
+                    <td><%= results.option_ps %></td>
+                    <th scope="col">オットマン</th>
+                    <td><%= results.option_ps %></td>
+                </tr>
+                
+
+            </tbody>
+        </table>
+
+
+        <h2>基本情報</h2>
+        <table class="table table-bordered table-hover text-center">
+            <tbody>
+                <tr>
+                    <th scope="col">ボディタイプ</th>
+                    <td><%= results.shape %></td>
+                    <th scope="col">駆動方式</th>
+                    <td><%= results.drive_system %></td>
+                </tr>
+                <tr>
+                    <th scope="col">本体色</th>
+                    <td><%= results.outer_color %></td>
+                    <th scope="col">ハンドル</th>
+                    <td><%= results.left_handle %></td>
+                </tr>
+                <tr>
+                    <th scope="col">ミッション</th>
+                    <td><%= results.car_type %></td>
+                    <th scope="col">排気量</th>
+                    <td><%= results.engine_size %></td>
+                </tr>
+                <tr>
+                    <th scope="col">乗車定員</th>
+                    <td><%= results.capacity %></td>
+                    <th scope="col">エンジンタイプ</th>
+                    <td><%= results.fuel %></td>
+                </tr>
+                <tr>
+                    <th scope="col">ドア数</th>
+                    <td><%= results.door %></td>
+                    <th scope="col">ギアの位置</th>
+                    <td><%= results.gear_position %></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/javascript_time.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function() {
+            $('.car').slick({
+                autoplay: true, //自動再生
+                autoplaySpeed: 2000, //自動再生のスピード
+                speed: 800, //スライドするスピード
+                dots: true, //スライドしたのドット
+                arrows: true, //左右の矢印
+                infinite: true, //スライドのループ
+                //dots: true,
+            });
+        });
+    </script>
+
+    <%- include('partials/footer.ejs'); %>

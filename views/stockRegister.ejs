@@ -1,0 +1,359 @@
+<!--在庫登録-->
+<%- include('partials/traderHeader.ejs'); %>
+    <nav class="navbar navbar-expand-lg navbar-light border-primary border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand text-primary" href="#"><b>在庫登録</b></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-primary" aria-current="page" href="/master"><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="/stock"><b>在庫一覧</b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <form action="/users" method="post">
+            <table class="contact-table">
+                <tr>
+                    <th class="contact-item">商品名</th>
+                    <td class="contact-body">
+                        <input type="text" name="product_name" id="product_name" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">出品番号</th>
+                    <td class="contact-body">
+                        <input type="number" name="product_num" id="product_num" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">年式</th>
+                    <td class="contact-body">
+                        <input type="text" name="model_year" id="model_year" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">車名</th>
+                    <td class="contact-body">
+                        <input type="text" name="car_name" id="car_name" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">形状</th>
+                    <td class="contact-body">
+                        <select name="shape" id="shape" class="form-select" required>
+                        <option value="" selected>選択してください</option>
+                        <option value="セダン">セダン</option>
+                        <option value="SUV">SUV</option>
+                        <option value="クーペ">クーペ</option>
+                        <option value="ハードトップ">ハードトップ</option>
+                        <option value="ハッチバック">ハッチバック</option>
+                        <option value="ボンネットワゴン">ボンネットワゴン</option>
+                        <option value="キャブワゴン">キャブワゴン</option>
+                        <option value="カブリオレ・ロードスター">カブリオレ・ロードスター</option>
+                        <option value="オフロード">オフロード</option>
+                        <option value="キャブオーバートラック">キャブオーバートラック</option>
+                        <option value="ボンネットトラック">ボンネットトラック</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">グレード</th>
+                    <td class="contact-body">
+                        <select name="grade" id="grade" class="form-select" required>
+                        <option value="" selected>選択してください</option>
+                        <option value="RS">RS</option>
+                        <option value="GT">GT</option>
+                        <option value="SSS">SSS</option>
+                        <option value="Si">Si</option>
+                        <option value="S">S</option>
+                        <option value="C">C</option>
+                        <option value="G">G</option>
+                        <option value="D">D</option>
+                        <option value="L">L</option>
+                        <option value="X">X</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">車歴</th>
+                    <td class="contact-body">
+                        <select id="history" name="history" class="form-select" required>
+                        <option value="" selected>選択してください</option>
+                        <option value="自家用車">自家用車</option>
+                        <option value="事務用">事務用</option>
+                        <option value="レンタカー">レンタカー</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">型式</th>
+                    <td class="contact-body">
+                        <input type="text" name="model" id="model" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">排気量</th>
+                    <td class="contact-body">
+                        <input type="number" name="engine_size" id="engine_size" class="form-text" required>cc
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">燃料</th>
+                    <td class="contact-body">
+                        <select id="fuel" name="fuel" class="form-select" required>
+                        <option value="" selected>選択してください</option>
+                        <option value="レギュラー">レギュラー</option>
+                        <option value="ハイオク">ハイオク</option>
+                        <option value="ディーゼル">ディーゼル</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">車検満了日</th>
+                    <td class="contact-body">
+                        <input type="number" id="year" value="2022" name="year" class="form-select" required>年
+                        <select id="month" name="month" class="form-select" required>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select> 月
+                        <select id="day" name="day" class="form-select" required>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="1">13</option>
+                    <option value="2">14</option>
+                    <option value="3">15</option>
+                    <option value="4">16</option>
+                    <option value="5">17</option>
+                    <option value="6">18</option>
+                    <option value="7">19</option>
+                    <option value="8">20</option>
+                    <option value="9">21</option>
+                    <option value="10">22</option>
+                    <option value="11">23</option>
+                    <option value="12">24</option>
+                    <option value="1">25</option>
+                    <option value="2">26</option>
+                    <option value="3">27</option>
+                    <option value="4">28</option>
+                    <option value="5">29</option>
+                    <option value="6">30</option>
+                    <option value="7">31</option>
+                </select>日
+                    </td>
+                </tr>
+
+                <tr>
+                    <th class="contact-item">走行距離</th>
+                    <td class="contact-body">
+                        <input type="number" name="mileage" id="mileage" class="form-text" required>Km
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">外塗装</th>
+                    <td class="contact-body">
+                        <input type="text" name="outer_color" id="outer_color" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">内塗装</th>
+                    <td class="contact-body">
+                        <input type="text" name="inner_color" id="inner_color" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">記入事項</th>
+                    <td class="contact-body">
+                        <input type="text" name="com" id="com" class="form-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">評価</th>
+                    <td class="contact-body">
+                        <select id="eva" name="eva" class="form-select" required>
+                    <option value="S">S</option>
+                    <option value="6">6</option>
+                    <option value="5">5</option>
+                    <option value="4.5">4.5</option>
+                    <option value="4">4</option>
+                    <option value="3.5">3.5</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="R">R</option>
+                </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">AT or MT</th>
+                    <td class="contact-body">
+                        <select id="type" name="type" class="form-select" required>
+                    <option value="AT">AT</option>
+                    <option value="MT">MT</option>
+                </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">セールスポイント</th>
+                    <td class="contact-body">
+                        <input type="text" id="sales" name="sales" class="form-select" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">ドア数</th>
+                    <td class="contact-body">
+                        <input type="number" name="door" class="form-select" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">ドア形状</th>
+                    <td class="contact-body">
+                        <select id="d_type" name="d_type" class="form-select" required>
+                    <option value="一般">一般</option>
+                    <option value="ハッチ型ドア">ハッチ型ドア</option>
+                    <option value="スライドドア">スライドドア有り</option>
+                    <option value="ガルウイングドア">ガルウイングドア</option>
+                    <option value="観音開きドア">観音開きドア</option>
+                    <option value="バタフライドア">バタフライドア</option>
+                    <option value="シザードア">シザードア</option>
+                    <option value="その他">その他</option>
+                </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">駆動方式</th>
+                    <td class="contact-body">
+                        <select id="d_sys" name="d_sys" class="form-select" required>
+                    <option value="FF">FF</option>
+                    <option value="FR">FR</option>
+                    <option value="MR">MR</option>
+                    <option value="RR">RR</option>
+                    <option value="2WD">2WD</option>
+                    <option value="4WD">4WD</option>
+                </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">乗車定員</th>
+                    <td class="contact-body">
+                        <input type="number" name="capa" id="capa" class="form-select" required>人
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">総重量</th>
+                    <td class="contact-body">
+                        <input type="number" name="g_weight" class="form-select" required>Kg
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">仕入れ日</th>
+                    <td class="contact-body">
+                        <input type="number" id="year" name="y_ear" value="2022" class="form-select" required>年
+                        <select id="month" name="m_onth" class="form-select" required>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>月
+                        <select id="day" name="d_ay" class="form-select" required>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="1">13</option>
+                    <option value="2">14</option>
+                    <option value="3">15</option>
+                    <option value="4">16</option>
+                    <option value="5">17</option>
+                    <option value="6">18</option>
+                    <option value="7">19</option>
+                    <option value="8">20</option>
+                    <option value="9">21</option>
+                    <option value="10">22</option>
+                    <option value="11">23</option>
+                    <option value="12">24</option>
+                    <option value="1">25</option>
+                    <option value="2">26</option>
+                    <option value="3">27</option>
+                    <option value="4">28</option>
+                    <option value="5">29</option>
+                    <option value="6">30</option>
+                    <option value="7">31</option>
+                </select>日
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">仕入れ先</th>
+                    <td class="contact-body">
+                        <input type="text" name="sup" class="form-select" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">仕入れ金額</th>
+                    <td class="contact-body">
+                        <input type="number" id="money" name="money" value="10000" class="form-select" required>円
+                        <input type="hidden" id="adminid" value="1" name="adminid" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="contact-item">メーカー</th>
+                    <td class="contact-body">
+                        <select id="maker" name="maker" class="form-select" required>
+                    <option>トヨタ</option>
+                    <option>日産</option>
+                    <option>マツダ</option>
+                    <option>ホンダ</option>
+                    <option>スズキ</option>
+                    <option>スバル</option>
+                    <option>ダイハツ</option>
+                    <option>三菱</option>
+                    <option>その他</option>
+                </select>
+                    </td>
+                </tr>
+                <input type="hidden" id="flg" value="0" name="flg" required>
+            </table>
+
+            <input class="contact-submit" type="submit" value="登録">
+        </form>
+        <div id="output"></div>
+    </div>

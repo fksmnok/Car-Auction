@@ -1,0 +1,43 @@
+.subtitle {
+    color: rgb(77, 77, 77);
+    font-size: 20px;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.cate-nav {
+    width: 80%;
+    height: 60px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: flex;
+    /* background-color: rgb(150, 148, 148); */
+}
+
+#search {
+    margin: auto;
+}
+
+#select {
+    /* margin: auto; */
+}
+
+#sort {
+    display: flex;
+}
+
+#wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+#car {
+    width: 25%;
+    box-sizing: border-box;
+    /* border: solid 1px gray; */
+    box-shadow: 0 2px 3px rgb(163, 163, 163);
+}

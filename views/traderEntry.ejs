@@ -1,0 +1,34 @@
+<!--業者を選んだ場合の会員登録画面-->
+
+    <link rel="stylesheet" href="/css/login_style.css" />
+    <%- include('partials/traderHeader.ejs'); %>
+    <nav class="navbar navbar-expand-lg navbar-light border-primary border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand text-primary" href="#">社員登録</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+
+</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-primary" aria-current="page" href="/master">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form class="box" action="/traderuser" method="post">
+        <h1>Entry</h1>
+        <input type="text" name="adminid" placeholder="adminid" required>
+        <input type="text" name="lastname" placeholder="性" required>
+        <input type="text" name="firstname" placeholder="名" required>
+        <input type="text" name="hlast" placeholder="セイ" required>
+        <input type="text" name="hfirst" placeholder="メイ" required>
+        <input type="text" name="phone" placeholder="電話番号" required>
+        <input type="text" name="mail" placeholder="メールアドレス" required>
+        <input type="text" name="birthday" placeholder="YYYYmmdd" required>
+        <input type="text" name="address" placeholder="住所" required>
+        <input type="hidden" name="flg" value="0">
+        <input type="submit" name="entry" value="登録">
+    </form>

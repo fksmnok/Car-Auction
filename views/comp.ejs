@@ -1,0 +1,61 @@
+<!--落札後-->
+<%- include('partials/header.ejs'); %>
+<% if(flag == false){ %>
+    <h1>落札できませんでした</h1>
+    <p><a href="http://localhost:9000">車一覧に戻る</a></p>
+<% } else { %>
+    <br>
+    <h2>
+    <%= username %>様落札おめでとうございます！！！
+    </h2>
+    <h2>出品番号<%= results.product_num + results.car_name %>落札！！！！！</h2>
+    <p style="text-align: center;"><img src="/img/kusudama_1170.png"></p>
+    <form action="/document" method="get">  
+        <p style="text-align: right; margin-right: 400px;"><input class="btn btn-outline-secondary" type="submit" value="▷次へ進む"></p>
+    </form>
+<% } %>
+    <script>
+        function func1() {
+            var radio1 = document.getElementsByName('address');
+            for (var i = 0; i < radio1.length; i++) {
+                //elems[i].checked
+                if (radio1[1].checked) {
+                    document.getElementById('addressText').disabled = true;
+                } else {
+                    document.getElementById('addressText').disabled = false;
+                }
+            }
+        }
+        function func2() {
+            var radio2 = document.getElementsByName('tell');
+            for (var i = 0; i < radio2.length; i++) {
+                //elems[i].checked
+                if (radio2[1].checked) {
+                    document.getElementById('tellText').disabled = true;
+                } else {
+                    document.getElementById('tellText').disabled = false;
+                }
+            }
+        }
+        function func3() {
+            var radio3 = document.getElementsByName('name');
+            for (var i = 0; i < radio3.length; i++) {
+                //elems[i].checked
+                if (radio3[1].checked) {
+                    let setbuttonArray = $('[id^="nameText"]');
+                    //取得したidを持つタグにdisabledを設置
+                    for (i = 0; i < setbuttonArray.length; i++) {
+                        $('#' + setbuttonArray[i].id).prop("disabled", true);
+                    }
+                } else {
+                    let setbuttonArray = $('[id^="nameText"]');
+                    //取得したidを持つタグにdisabledを設置
+                    for (i = 0; i < setbuttonArray.length; i++) {
+                        $('#' + setbuttonArray[i].id).prop("disabled", false);
+                    }
+                }
+            }
+        }
+
+    </script>
+    <%- include('partials/footer.ejs'); %>

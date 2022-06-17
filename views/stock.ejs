@@ -1,0 +1,68 @@
+<!--在庫一覧-->
+<%- include('partials/traderHeader.ejs'); %>
+    <nav class="navbar navbar-expand-lg navbar-light border-primary border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand text-primary" href="#"><b>在庫一覧</b></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="/master"><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="/register"><b>在庫登録</b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="margin-top: 30px;">
+
+        <table class="table table-bordered table-hover text-center">
+            <thead class="">
+                <tr>
+                    <th>車両id</th>
+                    <th>車両名</th>
+                    <th>型式</th>
+                    <th>出品番号</th>
+                    <th>形状</th>
+                    <th>グレード</th>
+                    <th>出品ステータス</th>
+                    <th>出品詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i = 0; i < values.length; i++ ) { %>
+                    <tr>
+                        <td>
+                            <%= values[i].id %>
+                        </td>
+                        <td>
+                            <%= values[i].product_name %>
+                        </td>
+                        <td>
+                            <%= values[i].model %>
+                        </td>
+                        <td>
+                            <%= values[i].product_num %>
+                        </td>
+                        <td>
+                            <%= values[i].shape %>
+                        </td>
+                        <td>
+                            <%= values[i].grade %>
+                        </td>
+                        <td>
+                            <% if (values[i].listing_flg == 1) { %>
+                                出品済み
+                                <% } else { %>
+                                    未出品
+                                    <% }  %>
+                        </td>
+                        <td>
+                            <a href="/display/<%= values[i].id %>">出品する</a>
+                        </td>
+                        <% } %>
+                    </tr>
+            </tbody>
+        </table>
+    </div>

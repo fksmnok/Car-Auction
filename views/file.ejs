@@ -1,0 +1,32 @@
+<!-- bootstrap読み込み用 -->
+<%- include('partials/stylesheets.ejs'); %>
+    <link rel="stylesheet" href="/css/file.css">
+    <div class="wrap">
+        <div class="content">
+            <div class="msg">
+                <h2>
+                    <%= name %>
+                </h2>
+                <p>ファイルを追加してください。</p>
+                <h1>ファイルアップロード</h1>
+            </div>
+            <form action="/upload" method="POST">
+                <table>
+                    <tr>
+                        <th class="Flex item contact-item">出品番号</th>
+                    </tr>
+                    <tr>
+                        <td class=" Flex itemcontact-body">
+                            <input type="number" name="product_num">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Flex item contact-body">
+                            <input type="file" name="file" class="form-control" id="inputGroupFile02">
+                        </td>
+                    </tr>
+                </table>
+                <input class="button1" type="submit" value="登録">
+            </form>
+        </div>
+    </div>

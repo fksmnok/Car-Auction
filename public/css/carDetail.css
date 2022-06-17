@@ -1,0 +1,131 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    height: 100%;
+    /* background-color: red; */
+}
+
+.usersy {
+    /* background-color: rgb(61, 138, 252); */
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    padding: auto;
+    width: 80%;
+    height: 60%;
+}
+
+h2 {
+    font-size: 1.2em;
+    padding: 0.25em 0.5em;
+    /*上下 左右の余白*/
+    color: #494949;
+    /*文字色*/
+    background: transparent;
+    /*背景透明に*/
+    border-left: solid 5px #7db4e6;
+    /*左線*/
+}
+
+.car img {
+    margin-top: 3%;
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.car {
+    /* margin-top: 9%; */
+    width: 40%;
+    margin: 0 auto;
+}
+
+.tablear {
+    width: 40%;
+    margin: 0 auto;
+    /* margin-top: 7%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+    margin-right: 5%; */
+}
+
+.tablear th {
+    width: 200px;
+}
+
+.contact-item {
+    font-size: 1.2em;
+}
+
+.contact-body {
+    font-size: 1.1em;
+}
+
+.contact-table {
+    margin: 0 auto;
+}
+
+.button_wrapper {
+    margin-top: 1%;
+    text-align: center;
+    height: 40%;
+    /* background-color: sandybrown; */
+}
+
+.button1 {
+    width: 250px;
+    background-color: rgb(61, 138, 252);
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 100vh;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.button2 {
+    width: 250px;
+    background-color: rgb(61, 138, 252);
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 100vh;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+
+/* slickの設定 */
+
+.slick-next {
+    right: 0!important;
+}
+
+.slick-prev {
+    left: 0!important;
+}
+
+.slick-arrow {
+    z-index: 2!important;
+}
+
+.slick-slide img {
+    width: auto\9;
+    /* ie8 */
+    margin: 0 auto;
+}

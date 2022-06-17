@@ -1,0 +1,64 @@
+<!--出品者のトップ-->
+<%- include('partials/traderHeader.ejs'); %>
+    <title>管理者画面</title>
+    
+    <div class="main-container">
+        <h2>Trader Page</h2>
+        <div class="radio-buttons">
+            <label class="custom-radio" onclick="location.href='/history'">
+                <input type="radio" name="radio" checked />
+                <span class="radio-btn">
+                    <i class="las la-check"></i>
+                    <div class="hobbies-icon">
+                        <i class="las la-history"></i>
+                        <h3>出品履歴</h3>
+                    </div>
+                </span>
+            </label>
+
+            <label class="custom-radio" onclick="location.href='/stock'">
+                <input type="radio" name="radio" />
+                <span class="radio-btn">
+                    <i class="las la-check"></i>
+                    <div class="hobbies-icon">
+                        <i class="las la-car"></i>
+                        <h3>在庫車両</h3>
+                    </div>
+                </span>
+            </label>
+
+            <label class="custom-radio" onclick="location.href='/userlist'">
+                <input type="radio" name="radio" />
+                <span class="radio-btn">
+                    <i class="las la-check"></i>
+                    <div class="hobbies-icon">
+                        <i class="las la-users"></i>
+                        <h3>ユーザー一覧</h3>
+                    </div>
+                </span>
+            </label>
+
+            <label class="custom-radio" onclick="location.href='/traderentry'">
+                <input type="radio" name="radio" />
+                    <span class="radio-btn">
+                        <i class="las la-check"></i>
+                            <div class="hobbies-icon">
+                                <i class="las la-user-plus"></i>
+                                    <h3>社員登録</h3>
+                            </div>
+                    </span>
+            </label>
+
+            <label class="custom-radio" onclick="location.href='/traderList'">
+                <input type="radio" name="radio" />
+                    <span class="radio-btn">
+                        <i class="las la-check"></i>
+                            <div class="hobbies-icon">
+                                <i class="las la-user-plus"></i>
+                                    <h3>社員一覧</h3>
+                            </div>
+                    </span>
+            </label>
+
+        </div>
+    </div>

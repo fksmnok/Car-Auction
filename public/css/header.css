@@ -1,0 +1,51 @@
+header {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    height: 80px;
+    width: 100%;
+    /* position: fixed; */
+    top: 0;
+    text-align: center;
+    align-items: center;
+    opacity: 0.95;
+}
+
+.logo {
+    height: 80px;
+}
+
+ul {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding-right: 30px;
+}
+
+li {
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+#title {
+    width: 30%;
+}
+
+h1 {
+    color: black;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+#top_img {
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+
+.top_img {
+    height: 80px;
+}
